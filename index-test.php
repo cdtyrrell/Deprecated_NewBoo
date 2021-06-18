@@ -33,7 +33,8 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-card w3-round w3-white">
         <div class="w3-container">
          <h4 class="w3-center">American Bamboos</h4>
-         <p class="w3-center"><img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <p class="w3-center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Bamboo_DSCN2465.jpg/450px-Bamboo_DSCN2465.jpg" class="w3-circle" style="height:106px;width:106px" alt="A bamboo"></p>
+         <p>image credit: Michele~commonswiki<p>
          <hr>
          <p>Dedicated to documenting and presenting information on the diversity and distribution of bamboo species native to the western hemisphere.</p>
         </div>
@@ -119,21 +120,19 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding">
 
-              <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-              <span class="w3-right w3-opacity">Righthand Text</span>
+              <span class="w3-right w3-opacity">Poaceae: Bambusoideae</span>
               <h4>What is a bamboo?</h4><br>
               <hr class="w3-clear">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p>Bamboos are a subfamily of grasses. There are over 1,500 species of bamboo worldwide, around a third of which are native to the western hemisphere. The bamboos evolved in and adapted to forest habitats, though some species can now be found in more open environments.</p>
                 <div class="w3-row-padding" style="margin:0 -16px">
                   <div class="w3-half">
-                    <img src="/w3images/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Chusquea_sp._%2811274480545%29.jpg/800px-Chusquea_sp._%2811274480545%29.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
                   </div>
                   <div class="w3-half">
-                    <img src="/w3images/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Bambou_%C3%A0_l%27entr%C3%A9e_annexe_du_jardin_de_Val-Rahmeh.jpg/800px-Bambou_%C3%A0_l%27entr%C3%A9e_annexe_du_jardin_de_Val-Rahmeh.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
                 </div>
               </div>
-              <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-              <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+              <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom">More Info</button>
 
             </div>
           </div>
@@ -142,22 +141,16 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
 				<?php
-  				//---------------------------QUICK SEARCH SETTINGS---------------------------------------
-  				//Title text that will appear.
   				$searchText = 'Search Taxon';
-
-  				//Text that will appear on search button.
   				$buttonText = 'Search';
-
-  				//---------------------------DO NOT CHANGE BELOW HERE-----------------------------
   				include_once($SERVER_ROOT.'/classes/PluginsManager.php');
   				$pluginManager = new PluginsManager();
-  				$quicksearch = $pluginManager->createQuickSearch($buttonText,$searchText);
+          $quicksearch = $pluginManager->quickSearchScript();
+          $quicksearch .= $pluginManager->quickSearchDiv($searchText,"w3-container w3-padding");
+      		$quicksearch .= $pluginManager->quickSearchInput("Bambusoideae","w3-padding");
+          $quicksearch .= $pluginManager->quickSearchButton($buttonText,"w3-button w3-theme-d2 w3-margin-bottom");
   				echo $quicksearch;
 				?>
-        <h6 class="w3-opacity">Search Taxon</h6>
-        <p contenteditable="true" class="w3-border w3-padding">Bambusoideae</p>
-        <button type="button" class="w3-button w3-theme">Search</button>
       </div>
 
     <!-- End Right Column -->

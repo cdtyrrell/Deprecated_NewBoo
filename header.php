@@ -10,7 +10,6 @@
     <button class="w3-button w3-padding-large" title="Search">Species</button>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:150px">
       <a href="#" class="w3-bar-item w3-button">Browse</a>
-      <a href="#" class="w3-bar-item w3-button">Search</a>
       <a href="<?php echo $clientRoot; ?>/checklists/dynamicmap.php" class="w3-bar-item w3-button">Map Search</a>
       <a href="<?php echo $clientRoot; ?>/imagelib/search.php" class="w3-bar-item w3-button">Images</a>
     </div>
@@ -59,7 +58,6 @@
 <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
   <a href="<?php echo $clientRoot; ?>/index.php" class="w3-bar-item w3-button w3-padding-large">Home</a>
   <a href="#" class="w3-bar-item w3-button w3-padding-large">Browse Species</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Search Species</a>
   <a href="<?php echo $clientRoot; ?>/checklists/dynamicmap.php?interface=key" class="w3-bar-item w3-button w3-padding-large">Species Map Search</a>
   <a href="<?php echo $clientRoot; ?>/collections/index.php" class="w3-bar-item w3-button w3-padding-large">Search Specimens</a>
   <a href="<?php echo $clientRoot; ?>/collections/map/mapinterface.php" class="w3-bar-item w3-button w3-padding-large">Specimen Map Search</a>
