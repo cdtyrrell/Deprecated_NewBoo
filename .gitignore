@@ -19,3 +19,6 @@
 .settings/org.eclipse.php.core.prefs
 /index.php
 /data
+config/schema-1.0/.DS_Store
+config/.DS_Store
+.DS_Store
