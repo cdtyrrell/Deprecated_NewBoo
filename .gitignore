@@ -12,12 +12,9 @@
 /css/speciesprofile.css
 /taxa/includes/config/taxaProfileElementsCustom.php
 /taxa/includes/config/taxaProfileTemplateCustom.php
-/footer.php
-/header.php
 /leftmenu.php
 /robots.txt
 .settings/org.eclipse.php.core.prefs
-/index.php
 /data
 config/schema-1.0/.DS_Store
 config/.DS_Store
