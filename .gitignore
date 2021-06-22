@@ -10,8 +10,8 @@
 /css/jquery-ui.css
 /css/main.css
 /css/speciesprofile.css
-/taxa/includes/config/taxaProfileElementsCustom.php
-/taxa/includes/config/taxaProfileTemplateCustom.php
+/taxa/includes/config/taxaProfileElementsCustom_template.php
+/taxa/includes/config/taxaProfileTemplateCustom_template.php
 /leftmenu.php
 /robots.txt
 .settings/org.eclipse.php.core.prefs

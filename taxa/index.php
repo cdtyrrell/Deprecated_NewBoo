@@ -4,8 +4,8 @@ include_once($SERVER_ROOT.'/content/lang/taxa/index.'.$LANG_TAG.'.php');
 include_once($SERVER_ROOT.'/classes/TaxonProfileManager.php');
 Header("Content-Type: text/html; charset=".$CHARSET);
 
-$taxonValue = array_key_exists("taxon",$_REQUEST)?$_REQUEST["taxon"]:""; 
-$taxAuthId = array_key_exists("taxauthid",$_REQUEST)?$_REQUEST["taxauthid"]:1; 
+$taxonValue = array_key_exists("taxon",$_REQUEST)?$_REQUEST["taxon"]:"";
+$taxAuthId = array_key_exists("taxauthid",$_REQUEST)?$_REQUEST["taxauthid"]:1;
 $clValue = array_key_exists("cl",$_REQUEST)?$_REQUEST["cl"]:0;
 $projValue = array_key_exists("proj",$_REQUEST)?$_REQUEST["proj"]:0;
 $lang = array_key_exists("lang",$_REQUEST)?$_REQUEST["lang"]:$DEFAULT_LANG;
@@ -73,13 +73,21 @@ else{
 <head>
 	<title><?php echo $DEFAULT_TITLE." - ".$spDisplay; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $CHARSET; ?>"/>
-	<link href="../css/base.css?ver=<?php echo $CSS_VERSION; ?>" type="text/css" rel="stylesheet" />
-	<link href="../css/main.css<?php echo (isset($CSS_VERSION_LOCAL)?'?ver='.$CSS_VERSION_LOCAL:''); ?>" type="text/css" rel="stylesheet" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="../css/speciesprofilebase.css?ver=<?php echo $CSS_VERSION; ?>" type="text/css" rel="stylesheet" />
 	<link href="../css/speciesprofile.css<?php echo (isset($CSS_VERSION_LOCAL)?'?ver='.$CSS_VERSION_LOCAL:''); ?>" type="text/css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="../css/w3.css">
+	<link rel="stylesheet" href="../css/w3-theme-light-green.css">
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	<link href="../css/jquery-ui.css" type="text/css" rel="Stylesheet" />
 	<script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui.js"></script>
+	<style>
+	html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+	</style>
 	<script type="text/javascript">
 		<?php include_once($SERVER_ROOT.'/config/googleanalytics.php'); ?>
 	</script>
@@ -103,54 +111,60 @@ else{
     }
     ?>
 </head>
-<body>
+<body class="w3-light-grey">
 <?php
 $displayLeftMenu = false;
 include($SERVER_ROOT.'/header.php');
 ?>
-<div id="innertable">
-    <div id="toprow">
-        <?php
-        foreach($topRowElements as $e){
-            echo $e;
-        }
-        ?>
-    </div>
+<div id="innertable" class="w3-content w3-container" style="margin-top:80px">
+	<div id="toprow" class="w3-row">
+		<div class="w3-col m12">
+	  	<?php
+	      foreach($topRowElements as $e){
+	        echo $e;
+	      }
+	    ?>
+	  </div>
+	</div>
 
-    <div id="middlerow">
-        <div id="leftcolumn" class="<?php echo $styleClass; ?>">
-            <?php
-            foreach($leftColumnElements as $e){
-                echo $e;
-            }
-            ?>
-        </div>
+	<!-- "Middle Row" -->
+	<div id="middlerow" class="w3-row">
+		<div id="leftcolumn" class="w3-col m3">
+	    <?php
+	      foreach($leftColumnElements as $e){
+	          echo $e;
+	      }
+	    ?>
+		</div>
 
-
-        <div id="rightcolumn" class="<?php echo $styleClass; ?>">
+    <div id="rightcolumn" class="w3-col m9">
             <?php
             foreach($rightColumnElements as $e){
                 echo $e;
             }
             ?>
-        </div>
     </div>
+	</div>
 
-    <div id="bottomrow">
+	<div id="bottomrow" class="w3-row">
+		<div class="w3-col m12">
         <?php
         foreach($bottomRowElements as $e){
             echo $e;
         }
         ?>
     </div>
+	</div>
 
-    <div id="footerrow">
-        <?php
-        foreach($footerRowElements as $e){
-            echo $e;
-        }
-        ?>
+  <div id="footerrow" class="w3-row">
+		<div class="w3-col m12">
+      <?php
+      foreach($footerRowElements as $e){
+          echo $e;
+      }
+      ?>
     </div>
+	</div>
 </div>
 <?php
 include($SERVER_ROOT.'/footer.php');
