@@ -10,6 +10,12 @@
 /css/jquery-ui.css
 /css/main.css
 /css/speciesprofile.css
+/css/w3-theme-green.css
+/css/w3-theme-teal.css
+/taxa/profile-test.html
+/taxonomyimport.csv
+/taxonomyimport-2.csv
+/uploadtaxaimport.csv
 /taxa/includes/config/taxaProfileElementsCustom_template.php
 /taxa/includes/config/taxaProfileTemplateCustom_template.php
 /leftmenu.php
