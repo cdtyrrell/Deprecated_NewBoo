@@ -163,8 +163,7 @@ if($descArr = $taxonManager->getDescriptions()){
         }
     }
     ?>
-    <div id="desctabs" class="w3-card w3-round w3-white ui-tabs <?php echo $styleClass; ?>">
-        <ul class="ui-tabs-nav">
+    <div id="desctabs" class="w3-card w3-round">
             <?php
             $capCnt = 1;
             foreach($descArr as $dArr){
@@ -174,19 +173,14 @@ if($descArr = $taxonManager->getDescriptions()){
                         $cap = $LANG['DESCRIPTION'].' #'.$capCnt;
                         $capCnt++;
                     }
-                    echo '<li><a href="#tab'.$id.'" class="selected">'.$cap.'</a></li>';
-                }
-            }
-            ?>
-        </ul>
-        <?php
-        foreach($descArr as $dArr){
-            foreach($dArr as $id => $vArr){
-                ?>
-                <div id="tab<?php echo $id; ?>" class="<?php echo ($styleClass=='species'?'sptab':'spptab'); ?>">
-                    <?php
+                    echo '<a href="#tab'.$id.'" class="selected">'.$cap.'</a>';
+                    echo '<!-- Drop Down Blocks -->'.PHP_EOL;
+                    echo '<div class="w3-white">'.PHP_EOL;
+                    echo '<button onclick="myFunction(\'tab'.$id.'\')" class="w3-button w3-block w3-theme-l1 w3-left-align">'.$cap.'</button>'.PHP_EOL; //need to escape 'tab.$id'
+                    echo '<div id="tab'.$id.'" class="w3-hide w3-container">'.PHP_EOL;
+
                     if($vArr["source"]){
-                        echo '<div id="descsource">';
+                        echo '<p>';
                         if($vArr["url"]){
                             echo '<a href="'.$vArr['url'].'" target="_blank">';
                         }
@@ -194,30 +188,35 @@ if($descArr = $taxonManager->getDescriptions()){
                         if($vArr["url"]){
                             echo "</a>";
                         }
-                        echo '</div>';
+                        echo '</p>';
                     }
+
                     $descArr = $vArr["desc"];
                     ?>
-                    <div style="clear:both;">
+                    <p>
                         <?php
                         foreach($descArr as $tdsId => $stmt){
                             echo $stmt." ";
                         }
-                        //if($this->clInfo){
-                        //echo "<div id='clinfo'><b>Local Notes:</b> ".$clInfo."</div>";
-                        //}
                         ?>
-                    </div>
-                </div>
-                <?php
+                    </p>
+                    <?php
+                    echo '</div>'.PHP_EOL;
+                    echo '</div>'.PHP_EOL;
+                    echo '<br>'.PHP_EOL;
+                }
             }
-        }
-        ?>
+            ?>
     </div>
     <?php
-}
-else{
-    echo '<div id="nodesc" class="w3-card w3-round w3-white" style="width:100%">'.$LANG['DESCRIPTION_NOT_AVAILABLE'].'</div>';
+} else {
+  echo '<div class="w3-white">'.PHP_EOL;
+
+  echo '<button onclick="myFunction(\'nodesc\')" class="w3-button w3-block w3-theme-l1 w3-left-align">'.$LANG['DESCRIPTION'].'</button>'.PHP_EOL;
+  echo '<div id="nodesc" class="w3-hide w3-container">';
+    echo '<p>'.$LANG['DESCRIPTION_NOT_AVAILABLE'].'</p>';
+  echo '</div></div>';
 }
 $descTabsDiv = ob_get_clean();
+
 ?>

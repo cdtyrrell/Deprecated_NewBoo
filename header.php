@@ -25,15 +25,16 @@
   </div>
   <!-- Keys -->
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Keys">Keys</a>
+  <a href='<?php echo $clientRoot; ?>/sitemap.php' class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Site Menu</a>
 
   <!-- Right Side -->
   <?php
   if($userDisplayName){
   ?>
   <div class="w3-dropdown-hover w3-hide-small w3-right">
-    <button class="w3-button w3-padding-large" title="Search">My Profile</button>
+    <button class="w3-button w3-padding-large" title="My Account">My Account</button>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:100px">
-      <a href="<?php echo $clientRoot; ?>/profile/viewprofile.php" class="w3-bar-item w3-button">Account</a>
+      <a href="<?php echo $clientRoot; ?>/profile/viewprofile.php" class="w3-bar-item w3-button">Profile</a>
       <a href="<?php echo $clientRoot; ?>/profile/index.php?submit=logout" class="w3-bar-item w3-button">Logout</a>
     </div>
   </div>
@@ -41,16 +42,18 @@
   }
   else{
   ?>
-      <a href="<?php echo $clientRoot."/profile/index.php?refurl=".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']; ?>" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="Log In">
-        Log In
-      </a>
-      <a href="<?php echo $clientRoot; ?>/profile/newprofile.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">
-        New Account
-      </a>
+  <div class="w3-dropdown-hover w3-hide-small w3-right">
+    <button class="w3-button w3-padding-large" title="Account">Accounts</button>
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:100px">
+
+      <a href="<?php echo $clientRoot."/profile/index.php?refurl=".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']; ?>" class="w3-bar-item w3-button" title="Log In">Log In</a>
+      <a href="<?php echo $clientRoot; ?>/profile/newprofile.php" class="w3-bar-item w3-button">Sign Up</a>
+    </div>
+  </div>
+
   <?php
   }
   ?>
-    <a href='<?php echo $clientRoot; ?>/sitemap.php' class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">Admin</a>
  </div>
 </div>
 
@@ -63,5 +66,21 @@
   <a href="<?php echo $clientRoot; ?>/collections/map/mapinterface.php" class="w3-bar-item w3-button w3-padding-large">Specimen Map Search</a>
   <a href="#" class="w3-bar-item w3-button w3-padding-large">Keys</a>
   <a href="<?php echo $clientRoot; ?>/imagelib/search.php" class="w3-bar-item w3-button w3-padding-large">Image Search</a>
-  <a href="<?php echo $clientRoot; ?>/sitemap.php" class="w3-bar-item w3-button w3-padding-large">Admin</a>
+  <a href="<?php echo $clientRoot; ?>/sitemap.php" class="w3-bar-item w3-button w3-padding-large">Site Menu</a>
+
+  <?php
+  if($userDisplayName){
+  ?>
+    <a href="<?php echo $clientRoot; ?>/profile/viewprofile.php" class="w3-bar-item w3-button w3-padding-large">Profile</a>
+    <a href="<?php echo $clientRoot; ?>/profile/index.php?submit=logout" class="w3-bar-item w3-button w3-padding-large">Logout</a>
+  <?php
+  }
+  else{
+  ?>
+  <a href="<?php echo $clientRoot."/profile/index.php?refurl=".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']; ?>" class="w3-bar-item w3-button w3-padding-large">Log In</a>
+  <a href="<?php echo $clientRoot; ?>/profile/newprofile.php" class="w3-bar-item w3-button w3-padding-large">Sign Up</a>
+  <?php
+  }
+  ?>
+
 </div>
