@@ -31,14 +31,13 @@ if(isset($_REQUEST['db'])){
 
 <html>
 <head>
-    <title><?php echo $defaultTitle.' '.$SEARCHTEXT['PAGE_TITLE']; ?></title>
-	<link href="../css/base.css?ver=<?php echo $CSS_VERSION; ?>" type="text/css" rel="stylesheet" />
-	<link href="../css/main.css<?php echo (isset($CSS_VERSION_LOCAL)?'?ver='.$CSS_VERSION_LOCAL:''); ?>" type="text/css" rel="stylesheet" />
+  <title><?php echo $defaultTitle.' '.$SEARCHTEXT['PAGE_TITLE']; ?></title>
+  <?php include($SERVER_ROOT . '/metalinks.php'); ?>
 	<link href="../css/jquery-ui.css" type="text/css" rel="Stylesheet" />
 	<script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui.js"></script>
-    <script type="text/javascript" src="../js/symb/collections.harvestparams.js?ver=9"></script>
-    <script type="text/javascript">
+  <script type="text/javascript" src="../js/symb/collections.harvestparams.js?ver=9"></script>
+  <script type="text/javascript">
         var starrJson = '';
 
         $(document).ready(function() {
@@ -135,7 +134,7 @@ if(isset($_REQUEST['db'])){
 
             return true;
         }
-    </script>
+  </script>
 </head>
 <body>
 
@@ -159,56 +158,164 @@ if(isset($_REQUEST['db'])){
 		</div>
 		<?php
 	}
-	?>
+?>
 
-	<div id="innertext">
-		<h1><?php echo $SEARCHTEXT['PAGE_HEADER']; ?></h1>
-		<?php echo $SEARCHTEXT['GENERAL_TEXT_1']; ?>
-        <div style="margin:5px;">
-			<input type='checkbox' name='showtable' id='showtable' value='1' onchange="changeTableDisplay();" /> Show results in table view
-		</div>
-		<form name="harvestparams" id="harvestparams" action="list.php" method="post" onsubmit="return checkHarvestparamsForm(this);">
-			<div style="margin:10 0 10 0;"><hr></div>
-			<div style='float:right;margin:5px 10px;'>
-				<div style="margin-bottom:10px"><input type="submit" class="nextbtn" value="<?php echo isset($LANG['BUTTON_NEXT'])?$LANG['BUTTON_NEXT']:'Next >'; ?>" /></div>
-				<div><button type="button" class="resetbtn" onclick='resetHarvestParamsForm(this.form);'><?php echo isset($LANG['BUTTON_RESET'])?$LANG['BUTTON_RESET']:'Reset Form'; ?></button></div>
-			</div>
-			<div>
-				<h1><?php echo $SEARCHTEXT['TAXON_HEADER']; ?></h1>
-				<span style="margin-left:5px;"><input type='checkbox' name='thes' value='1' CHECKED /><?php echo $SEARCHTEXT['GENERAL_TEXT_2']; ?></SPAN>
-			</div>
-			<div id="taxonSearch0">
-				<div>
-					<select id="taxontype" name="type">
-						<option value='1'><?php echo $SEARCHTEXT['SELECT_1-1']; ?></option>
-						<option value='2'><?php echo $SEARCHTEXT['SELECT_1-2']; ?></option>
-						<option value='3'><?php echo $SEARCHTEXT['SELECT_1-3']; ?></option>
-						<option value='4'><?php echo $SEARCHTEXT['SELECT_1-4']; ?></option>
-						<option value='5'><?php echo $SEARCHTEXT['SELECT_1-5']; ?></option>
-					</select>:
-					<input id="taxa" type="text" size="60" name="taxa" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_1']; ?>" />
-				</div>
-			</div>
-			<div style="margin:10 0 10 0;"><hr></div>
-			<div>
-				<h1><?php echo $SEARCHTEXT['LOCALITY_HEADER']; ?></h1>
-			</div>
-			<div>
-				<?php echo $SEARCHTEXT['COUNTRY_INPUT']; ?> <input type="text" id="country" size="43" name="country" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_1']; ?>" />
-			</div>
-			<div>
-				<?php echo $SEARCHTEXT['STATE_INPUT']; ?> <input type="text" id="state" size="37" name="state" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_1']; ?>" />
-			</div>
-			<div>
-				<?php echo $SEARCHTEXT['COUNTY_INPUT']; ?> <input type="text" id="county" size="37"  name="county" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_1']; ?>" />
-			</div>
-			<div>
-				<?php echo $SEARCHTEXT['LOCALITY_INPUT']; ?> <input type="text" id="locality" size="43" name="local" value="" />
-			</div>
-			<div>
-				<?php echo $SEARCHTEXT['ELEV_INPUT_1']; ?> <input type="text" id="elevlow" size="10" name="elevlow" value="" /> <?php echo $SEARCHTEXT['ELEV_INPUT_2']; ?>
-				<input type="text" id="elevhigh" size="10" name="elevhigh" value="" />
-			</div>
+<!-- INNER TEXT -->
+  <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+    <form name="harvestparams" id="harvestparams" action="list.php" method="post" onsubmit="return checkHarvestparamsForm(this);">
+
+    <!-- Top Row -->
+    <div class="w3-row">
+      <div class="w3-col m12">
+        <!-- Search -->
+        <div class="w3-card w3-round w3-white w3-margin">
+          <div class="w3-container">
+		          <h1><?php echo $SEARCHTEXT['PAGE_HEADER']; ?></h1>
+		          <p><?php echo $SEARCHTEXT['GENERAL_TEXT_1']; ?></p>
+			               <input type='checkbox' name='showtable' id='showtable' value='1' onchange="changeTableDisplay();" /> Show results in table view
+                <div style='float:right;margin:5px 10px;'>
+                  <input type="submit" class="nextbtn" value="<?php echo isset($LANG['BUTTON_NEXT'])?$LANG['BUTTON_NEXT']:'Next >'; ?>" />
+                  <button type="button" class="resetbtn" onclick='resetHarvestParamsForm(this.form);'><?php echo isset($LANG['BUTTON_RESET'])?$LANG['BUTTON_RESET']:'Reset Form'; ?></button>
+                </div>
+              </div>
+            </div>
+
+          <!-- Taxonomy -->
+          <div class="w3-card w3-round w3-white w3-margin">
+            <div class="w3-container w3-padding">
+              <h2><?php echo $SEARCHTEXT['TAXON_HEADER']; ?></h2>
+              <p>
+                <input type='checkbox' name='thes' value='1' CHECKED />
+                <?php echo $SEARCHTEXT['GENERAL_TEXT_2']; ?>
+              </p>
+              <div id="taxonSearch0" class="w3-row">
+      					<select id="taxontype" name="type">
+      						<option value='1'><?php echo $SEARCHTEXT['SELECT_1-1']; ?></option>
+      						<option value='2'><?php echo $SEARCHTEXT['SELECT_1-2']; ?></option>
+      						<option value='3'><?php echo $SEARCHTEXT['SELECT_1-3']; ?></option>
+      						<option value='4'><?php echo $SEARCHTEXT['SELECT_1-4']; ?></option>
+      						<option value='5'><?php echo $SEARCHTEXT['SELECT_1-5']; ?></option>
+      					</select>:
+				        <input id="taxa" type="text" name="taxa" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_1']; ?>" style="width:80%"/>
+				      </div>
+            </div>
+          </div>
+        </div> <!-- end m12 col -->
+
+      <!-- Begin two column -->
+        <!-- Left Column -->
+        <div class="w3-col m6">
+          <!-- Collector -->
+          <div class="w3-card w3-round w3-white w3-margin">
+            <div class="w3-container w3-padding">
+              <h2><?php echo $SEARCHTEXT['COLLECTOR_HEADER']; ?></h2>
+              <div class="w3-container">
+                <div class="w3-third">
+                  <?php echo $SEARCHTEXT['COLLECTOR_LASTNAME']; ?>
+                </div>
+                <div class="w3-twothird">
+                  <input type="text" id="collector" style="width:100%" name="collector" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_1']; ?>" />
+                </div>
+              </div>
+              <div class="w3-container">
+                <div class="w3-third">
+                  <?php echo $SEARCHTEXT['COLLECTOR_NUMBER']; ?>
+                </div>
+                <div class="w3-twothird">
+                  <input type="text" id="collnum" style="width:100%" name="collnum" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_2']; ?>" />
+                </div>
+              </div>
+              <div class="w3-container">
+                <div class="w3-third">
+                  <?php echo $SEARCHTEXT['COLLECTOR_DATE']; ?>
+                </div>
+                <div class="w3-twothird">
+                  <input type="text" id="eventdate1" style="width:48%" name="eventdate1" style="width:100px;" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_3']; ?>" /> -
+                  <input type="text" id="eventdate2" style="width:48%" name="eventdate2" style="width:100px;" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_4']; ?>" />
+                </div>
+              </div>
+
+              </div>
+            </div>
+
+            <!-- Specimen -->
+            <div class="w3-card w3-round w3-white w3-margin">
+              <div class="w3-container w3-padding">
+                <h2><?php echo $SEARCHTEXT['SPECIMEN_HEADER']; ?></h2>
+                <div>
+                  <?php echo $SEARCHTEXT['CATALOG_NUMBER']; ?>
+                  <input type="text" id="catnum" style="width:70%" name="catnum" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_1']; ?>" />
+                </div>
+                <div>
+                  <input type="checkbox" name="includeothercatnum" value="1" checked />
+                  <?php echo $SEARCHTEXT['INCLUDE_OTHER_CATNUM']; ?>
+                </div>
+                <div>
+                  <input type='checkbox' name='typestatus' value='1' />
+                  <?php echo $SEARCHTEXT['TYPE']; ?>
+                </div>
+                <div>
+                  <input type='checkbox' name='hasimages' value='1' />
+                  <?php echo $SEARCHTEXT['HAS_IMAGE']; ?>
+                </div>
+                <div id="searchGeneticCheckbox">
+                  <input type='checkbox' name='hasgenetic' value='1' />
+                  <?php echo $SEARCHTEXT['HAS_GENETIC']; ?>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="w3-col m6">
+
+<!-- Locality -->
+<div class="w3-card w3-round w3-white w3-margin">
+  <div class="w3-container w3-padding">
+				<h2><?php echo $SEARCHTEXT['LOCALITY_HEADER']; ?></h2>
+        <div class="w3-container">
+          <div class="w3-third">
+            <?php echo $SEARCHTEXT['COUNTRY_INPUT']; ?>
+          </div>
+          <div class="w3-twothird">
+            <input type="text" id="country" style="width:100%" name="country" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_1']; ?>" />
+          </div>
+        </div>
+        <div class="w3-container">
+          <div class="w3-third">
+            <?php echo $SEARCHTEXT['STATE_INPUT']; ?>
+          </div>
+          <div class="w3-twothird">
+            <input type="text" id="state" style="width:100%" name="state" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_1']; ?>" />
+          </div>
+        </div>
+        <div class="w3-container">
+          <div class="w3-third">
+            <?php echo $SEARCHTEXT['COUNTY_INPUT']; ?>
+          </div>
+          <div class="w3-twothird">
+            <input type="text" id="county" style="width:100%"  name="county" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_1']; ?>" />
+          </div>
+        </div>
+        <div class="w3-container">
+          <div class="w3-third">
+            <?php echo $SEARCHTEXT['LOCALITY_INPUT']; ?>
+          </div>
+          <div class="w3-twothird">
+            <input type="text" id="locality" style="width:100%" name="local" value="" />
+          </div>
+        </div>
+        <div class="w3-container">
+          <div class="w3-third">
+            <?php echo $SEARCHTEXT['ELEV_INPUT_1']; ?>
+          </div>
+          <div class="w3-twothird">
+            <input type="text" id="elevlow" style="width:46%" name="elevlow" value="" />
+            <?php echo $SEARCHTEXT['ELEV_INPUT_2']; ?>
+            <input type="text" id="elevhigh" style="width:46%" name="elevhigh" value="" />
+          </div>
+        </div>
+
             <?php
             if($QUICK_HOST_ENTRY_IS_ACTIVE) {
                 ?>
@@ -218,113 +325,138 @@ if(isset($_REQUEST['db'])){
                 <?php
             }
             ?>
-			<div style="margin:10 0 10 0;">
-				<hr>
-				<h1><?php echo $SEARCHTEXT['LAT_LNG_HEADER']; ?></h1>
-			</div>
-			<div style="width:300px;float:left;border:2px solid brown;padding:10px;margin-bottom:10px;">
-				<div style="font-weight:bold;">
-					<?php echo $SEARCHTEXT['LL_BOUND_TEXT']; ?>
-				</div>
-				<div>
-					<?php echo $SEARCHTEXT['LL_BOUND_NLAT']; ?> <input type="text" id="upperlat" name="upperlat" size="7" value="" onchange="checkUpperLat();" style="margin-left:9px;">
-					<select id="upperlat_NS" name="upperlat_NS" onchange="checkUpperLat();">
-						<option id="nlN" value="N"><?php echo $SEARCHTEXT['LL_N_SYMB']; ?></option>
-						<option id="nlS" value="S"><?php echo $SEARCHTEXT['LL_S_SYMB']; ?></option>
-					</select>
-				</div>
-				<div>
-					<?php echo $SEARCHTEXT['LL_BOUND_SLAT']; ?> <input type="text" id="bottomlat" name="bottomlat" size="7" value="" onchange="javascript:checkBottomLat();" style="margin-left:7px;">
-					<select id="bottomlat_NS" name="bottomlat_NS" onchange="checkBottomLat();">
-						<option id="blN" value="N"><?php echo $SEARCHTEXT['LL_N_SYMB']; ?></option>
-						<option id="blS" value="S"><?php echo $SEARCHTEXT['LL_S_SYMB']; ?></option>
-					</select>
-				</div>
-				<div>
-					<?php echo $SEARCHTEXT['LL_BOUND_WLNG']; ?> <input type="text" id="leftlong" name="leftlong" size="7" value="" onchange="javascript:checkLeftLong();">
-					<select id="leftlong_EW" name="leftlong_EW" onchange="checkLeftLong();">
-						<option id="llW" value="W"><?php echo $SEARCHTEXT['LL_W_SYMB']; ?></option>
-						<option id="llE" value="E"><?php echo $SEARCHTEXT['LL_E_SYMB']; ?></option>
-					</select>
-				</div>
-				<div>
-					<?php echo $SEARCHTEXT['LL_BOUND_ELNG']; ?> <input type="text" id="rightlong" name="rightlong" size="7" value="" onchange="javascript:checkRightLong();" style="margin-left:3px;">
-					<select id="rightlong_EW" name="rightlong_EW" onchange="checkRightLong();">
-						<option id="rlW" value="W"><?php echo $SEARCHTEXT['LL_W_SYMB']; ?></option>
-						<option id="rlE" value="E"><?php echo $SEARCHTEXT['LL_E_SYMB']; ?></option>
-					</select>
-				</div>
-				<div style="clear:both;float:right;margin-top:8px;cursor:pointer;" onclick="openBoundingBoxMap();">
-					<img src="../images/world.png" width="15px" title="<?php echo $SEARCHTEXT['LL_P-RADIUS_TITLE_1']; ?>" />
-				</div>
-			</div>
-			<div style="width:260px; float:left;border:2px solid brown;padding:10px;margin-left:10px;">
-				<div style="font-weight:bold;">
-					<?php echo $SEARCHTEXT['LL_P-RADIUS_TEXT']; ?>
-				</div>
-				<div>
-					<?php echo $SEARCHTEXT['LL_P-RADIUS_LAT']; ?> <input type="text" id="pointlat" name="pointlat" size="7" value="" onchange="javascript:checkPointLat();" style="margin-left:11px;">
-					<select id="pointlat_NS" name="pointlat_NS" onchange="checkPointLat();">
-						<option id="N" value="N"><?php echo $SEARCHTEXT['LL_N_SYMB']; ?></option>
-						<option id="S" value="S"><?php echo $SEARCHTEXT['LL_S_SYMB']; ?></option>
-					</select>
-				</div>
-				<div>
-					<?php echo $SEARCHTEXT['LL_P-RADIUS_LNG']; ?> <input type="text" id="pointlong" name="pointlong" size="7" value="" onchange="javascript:checkPointLong();">
-					<select id="pointlong_EW" name="pointlong_EW" onchange="checkPointLong();">
-						<option id="W" value="W"><?php echo $SEARCHTEXT['LL_W_SYMB']; ?></option>
-						<option id="E" value="E"><?php echo $SEARCHTEXT['LL_E_SYMB']; ?></option>
-					</select>
-				</div>
-				<div>
-					<?php echo $SEARCHTEXT['LL_P-RADIUS_RADIUS']; ?> <input type="text" id="radiustemp" name="radiustemp" size="5" value="" style="margin-left:15px;" onchange="updateRadius();">
-					<select id="radiusunits" name="radiusunits" onchange="updateRadius();">
-						<option value="km"><?php echo $SEARCHTEXT['LL_P-RADIUS_KM']; ?></option>
-						<option value="mi"><?php echo $SEARCHTEXT['LL_P-RADIUS_MI']; ?></option>
-					</select>
-					<input type="hidden" id="radius" name="radius" value="" />
-				</div>
-				<div style="clear:both;float:right;margin-top:8px;cursor:pointer;" onclick="openPointRadiusMap();">
-					<img src="../images/world.png" width="15px" title="<?php echo $SEARCHTEXT['LL_P-RADIUS_TITLE_1']; ?>" />
-				</div>
-			</div>
-			<div style=";clear:both;"><hr/></div>
-			<div>
-				<h1><?php echo $SEARCHTEXT['COLLECTOR_HEADER']; ?></h1>
-			</div>
-			<div>
-				<?php echo $SEARCHTEXT['COLLECTOR_LASTNAME']; ?>
-				<input type="text" id="collector" size="32" name="collector" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_1']; ?>" />
-			</div>
-			<div>
-				<?php echo $SEARCHTEXT['COLLECTOR_NUMBER']; ?>
-				<input type="text" id="collnum" size="31" name="collnum" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_2']; ?>" />
-			</div>
-			<div>
-				<?php echo $SEARCHTEXT['COLLECTOR_DATE']; ?>
-				<input type="text" id="eventdate1" size="32" name="eventdate1" style="width:100px;" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_3']; ?>" /> -
-				<input type="text" id="eventdate2" size="32" name="eventdate2" style="width:100px;" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_4']; ?>" />
-			</div>
-			<div style="float:right;">
-				<input type="submit" class="nextbtn" value="<?php echo isset($LANG['BUTTON_NEXT'])?$LANG['BUTTON_NEXT']:'Next >'; ?>" />
-			</div>
-			<div>
-				<h1><?php echo $SEARCHTEXT['SPECIMEN_HEADER']; ?></h1>
-			</div>
-			<div>
-				<?php echo $SEARCHTEXT['CATALOG_NUMBER']; ?>
-                <input type="text" id="catnum" size="32" name="catnum" value="" title="<?php echo $SEARCHTEXT['TITLE_TEXT_1']; ?>" />
-                <input name="includeothercatnum" type="checkbox" value="1" checked /> <?php echo $SEARCHTEXT['INCLUDE_OTHER_CATNUM']; ?>
-			</div>
-			<div>
-				<input type='checkbox' name='typestatus' value='1' /> <?php echo $SEARCHTEXT['TYPE']; ?>
-			</div>
-			<div>
-				<input type='checkbox' name='hasimages' value='1' /> <?php echo $SEARCHTEXT['HAS_IMAGE']; ?>
-			</div>
-            <div id="searchGeneticCheckbox">
-                <input type='checkbox' name='hasgenetic' value='1' /> <?php echo $SEARCHTEXT['HAS_GENETIC']; ?>
+          </div>
+        </div>
+
+        <!-- Lat/Long -->
+        <div class="w3-card w3-round w3-white w3-margin">
+          <div class="w3-container w3-padding">
+            <h2><?php echo $SEARCHTEXT['LAT_LNG_HEADER']; ?></h2>
+
+            <div style="clear:both;float:right;margin-top:8px;cursor:pointer;" onclick="openBoundingBoxMap();">
+              <i class="fa fa-globe" title="<?php echo $SEARCHTEXT['LL_P-RADIUS_TITLE_1']; ?>"></i>
             </div>
+            <div>
+              <b><?php echo $SEARCHTEXT['LL_BOUND_TEXT']; ?></b>
+              <div class="w3-container">
+                <div class="w3-third">
+        					<?php echo $SEARCHTEXT['LL_BOUND_NLAT']; ?>
+                </div>
+                <div class="w3-third">
+                  <input type="text" id="upperlat" name="upperlat" style="width:100%" value="" onchange="checkUpperLat();" style="margin-left:9px;">
+                </div>
+                <div class="w3-third">
+        					<select id="upperlat_NS" name="upperlat_NS" onchange="checkUpperLat();">
+        						<option id="nlN" value="N"><?php echo $SEARCHTEXT['LL_N_SYMB']; ?></option>
+        						<option id="nlS" value="S"><?php echo $SEARCHTEXT['LL_S_SYMB']; ?></option>
+        					</select>
+                </div>
+      				</div>
+              <div class="w3-container">
+                <div class="w3-third">
+                  <?php echo $SEARCHTEXT['LL_BOUND_SLAT']; ?>
+                </div>
+                <div class="w3-third">
+                  <input type="text" id="bottomlat" name="bottomlat" style="width:100%" value="" onchange="javascript:checkBottomLat();" style="margin-left:7px;">
+                </div>
+                <div class="w3-third">
+        					<select id="bottomlat_NS" name="bottomlat_NS" onchange="checkBottomLat();">
+        						<option id="blN" value="N"><?php echo $SEARCHTEXT['LL_N_SYMB']; ?></option>
+        						<option id="blS" value="S"><?php echo $SEARCHTEXT['LL_S_SYMB']; ?></option>
+        					</select>
+      				</div>
+            </div>
+            <div class="w3-container">
+              <div class="w3-third">
+                <?php echo $SEARCHTEXT['LL_BOUND_WLNG']; ?>
+              </div>
+              <div class="w3-third">
+                <input type="text" id="leftlong" name="leftlong" style="width:100%" value="" onchange="javascript:checkLeftLong();">
+              </div>
+              <div class="w3-third">
+      					<select id="leftlong_EW" name="leftlong_EW" onchange="checkLeftLong();">
+      						<option id="llW" value="W"><?php echo $SEARCHTEXT['LL_W_SYMB']; ?></option>
+      						<option id="llE" value="E"><?php echo $SEARCHTEXT['LL_E_SYMB']; ?></option>
+      					</select>
+              </div>
+    				</div>
+            <div class="w3-container">
+              <div class="w3-third">
+                <?php echo $SEARCHTEXT['LL_BOUND_ELNG']; ?>
+              </div>
+              <div class="w3-third">
+                <input type="text" id="rightlong" name="rightlong" style="width:100%" value="" onchange="javascript:checkRightLong();" style="margin-left:3px;">
+              </div>
+              <div class="w3-third">
+                <select id="rightlong_EW" name="rightlong_EW" onchange="checkRightLong();">
+                  <option id="rlW" value="W"><?php echo $SEARCHTEXT['LL_W_SYMB']; ?></option>
+                  <option id="rlE" value="E"><?php echo $SEARCHTEXT['LL_E_SYMB']; ?></option>
+                </select>
+              </div>
+    				</div>
+          </div>
+
+          <div style="clear:both;float:right;margin-top:8px;cursor:pointer;" onclick="openPointRadiusMap();">
+            <i class="fa fa-globe" title="<?php echo $SEARCHTEXT['LL_P-RADIUS_TITLE_1']; ?>"></i>
+          </div>
+    			<div>
+    				<b><?php echo $SEARCHTEXT['LL_P-RADIUS_TEXT']; ?></b>
+    				<div>
+              <div class="w3-container">
+                <div class="w3-third">
+        					<?php echo $SEARCHTEXT['LL_P-RADIUS_LAT']; ?>
+                </div>
+                <div class="w3-third">
+                  <input type="text" id="pointlat" name="pointlat" style="width:100%" value="" onchange="javascript:checkPointLat();" style="margin-left:11px;">
+                </div>
+                <div class="w3-third">
+        					<select id="pointlat_NS" name="pointlat_NS" onchange="checkPointLat();">
+        						<option id="N" value="N"><?php echo $SEARCHTEXT['LL_N_SYMB']; ?></option>
+        						<option id="S" value="S"><?php echo $SEARCHTEXT['LL_S_SYMB']; ?></option>
+        					</select>
+        				</div>
+              </div>
+              <div class="w3-container">
+                <div class="w3-third">
+        					<?php echo $SEARCHTEXT['LL_P-RADIUS_LNG']; ?>
+                </div>
+                <div class="w3-third">
+                  <input type="text" id="pointlong" name="pointlong" style="width:100%" value="" onchange="javascript:checkPointLong();">
+                </div>
+                <div class="w3-third">
+        					<select id="pointlong_EW" name="pointlong_EW" onchange="checkPointLong();">
+        						<option id="W" value="W"><?php echo $SEARCHTEXT['LL_W_SYMB']; ?></option>
+        						<option id="E" value="E"><?php echo $SEARCHTEXT['LL_E_SYMB']; ?></option>
+        					</select>
+                </div>
+              </div>
+              <div class="w3-container">
+                <div class="w3-third">
+        					<?php echo $SEARCHTEXT['LL_P-RADIUS_RADIUS']; ?>
+                </div>
+                <div class="w3-third">
+                  <input type="text" id="radiustemp" name="radiustemp" style="width:100%" value="" style="margin-left:15px;" onchange="updateRadius();">
+                </div>
+                <div class="w3-third">
+        					<select id="radiusunits" name="radiusunits" onchange="updateRadius();">
+        						<option value="km"><?php echo $SEARCHTEXT['LL_P-RADIUS_KM']; ?></option>
+        						<option value="mi"><?php echo $SEARCHTEXT['LL_P-RADIUS_MI']; ?></option>
+        					</select>
+        					<input type="hidden" id="radius" name="radius" value="" />
+                </div>
+      				</div>
+    			</div>
+        </div>
+      </div>
+    </div> <!-- End Lat/Long -->
+  </div> <!-- End Right Col -->
+</div> <!-- End Second Row -->
+
+<!--
+			<div style="float:right;">
+				<input type="submit" class="nextbtn" value="<?php //echo isset($LANG['BUTTON_NEXT'])?$LANG['BUTTON_NEXT']:'Next >'; ?>" />
+			</div>
+    -->
 			<input type="hidden" name="reset" value="1" />
 		</form>
     </div>

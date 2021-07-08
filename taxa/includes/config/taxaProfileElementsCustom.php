@@ -83,7 +83,7 @@ if($isTaxonEditor){
         </a>
     <?php
 }
-$editButtonDiv = ob_get_clean();
+$pencilIcon = ob_get_clean();
 
 ob_start();
     // if($clValue){
@@ -142,7 +142,7 @@ ob_start();
         ?>
         <!-- <div class="clear"><hr></div>-->
 <?php
-$imgBoxDiv = ob_get_clean();
+$imgGallery = ob_get_clean();
 
 ob_start();
 if($descArr = $taxonManager->getDescriptions()){
@@ -217,6 +217,6 @@ if($descArr = $taxonManager->getDescriptions()){
     echo '<p>'.$LANG['DESCRIPTION_NOT_AVAILABLE'].'</p>';
   echo '</div></div>';
 }
-$descTabsDiv = ob_get_clean();
+$descDropDown = ob_get_clean();
 
 ?>

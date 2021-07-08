@@ -9,9 +9,9 @@
   <div class="w3-dropdown-hover w3-hide-small">
     <button class="w3-button w3-padding-large" title="Search">Species</button>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:150px">
-      <a href="#" class="w3-bar-item w3-button">Browse</a>
+      <a href="<?php echo $clientRoot; ?>/checklists/checklist.php?cl=1" class="w3-bar-item w3-button">Browse</a>
       <a href="<?php echo $clientRoot; ?>/checklists/dynamicmap.php" class="w3-bar-item w3-button">Map Search</a>
-      <a href="<?php echo $clientRoot; ?>/imagelib/search.php" class="w3-bar-item w3-button">Images</a>
+      <!-- <a href="<?php echo $clientRoot; ?>/imagelib/search.php" class="w3-bar-item w3-button">Images</a> -->
     </div>
   </div>
   <!-- Specimens -->
@@ -20,11 +20,12 @@
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:150px">
       <a href="<?php echo $clientRoot; ?>/collections/index.php" class="w3-bar-item w3-button">Search</a>
       <a href="<?php echo $clientRoot; ?>/collections/map/mapinterface.php" class="w3-bar-item w3-button">Map Search</a>
-      <a href="<?php echo $clientRoot; ?>/imagelib/search.php" class="w3-bar-item w3-button">Images</a>
+      <!-- <a href="<?php echo $clientRoot; ?>/imagelib/search.php" class="w3-bar-item w3-button">Images</a> -->
     </div>
   </div>
   <!-- Keys -->
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Keys">Keys</a>
+  <a href="<?php echo $clientRoot; ?>/ident/index.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Keys">Keys</a>
+  <!-- Site Map -->
   <a href='<?php echo $clientRoot; ?>/sitemap.php' class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Site Menu</a>
 
   <!-- Right Side -->

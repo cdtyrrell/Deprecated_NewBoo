@@ -63,16 +63,16 @@ $footerRowElements = Array(); //Bottom horizontal bar in taxon profile page
 if($taxonRank){
     if($taxonRank > 180){ //Template for taxa pages below the genus rank.
         $topRowElements = Array();
-        $leftColumnElements = Array();
-        $rightColumnElements = Array();
-        $bottomRowElements = Array();
+        $leftColumnElements = Array($taxonTile);
+        $rightColumnElements = Array($pencilIcon,$descDropDown);
+        $bottomRowElements = Array($imgGallery);
         $footerRowElements = Array();
     }
     elseif($taxonRank == 180){ //Template for genera taxa pages.
         $topRowElements = Array();
         $leftColumnElements = Array($taxonTile);
-        $rightColumnElements = Array($editButtonDiv,$descTabsDiv);
-        $bottomRowElements = Array($imgBoxDiv);
+        $rightColumnElements = Array($pencilIcon,$descDropDown);
+        $bottomRowElements = Array($imgGallery);
         $footerRowElements = Array();
     }
     else{  //Template for taxa pages above the genus rank.

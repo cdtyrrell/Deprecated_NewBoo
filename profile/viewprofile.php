@@ -189,7 +189,7 @@ if(isset($profile_viewprofileCrumbs)){
 					echo '<li><a href="specimenstoid.php?userid='.$userId.'&action='.$action.'">IDs Needed</a></li>';
 					echo '<li><a href="imagesforid.php">Images for ID</a></li>';
 				}
-				if( $fpEnabled) {
+				if(isset($fpEnabled) && $fpEnabled) {
 					$userTaxonomy = $person->getUserTaxonomy();
 
 					foreach ($userTaxonomy as $cat => $taxonArr) {

@@ -98,13 +98,12 @@ else{
 <head>
 	<title><?php echo $defaultTitle; ?> Login</title>
 	<meta http-equiv="X-Frame-Options" content="deny">
-	<link href="../css/base.css?ver=<?php echo $CSS_VERSION; ?>" type="text/css" rel="stylesheet" />
-	<link href="../css/main.css<?php echo (isset($CSS_VERSION_LOCAL)?'?ver='.$CSS_VERSION_LOCAL:''); ?>" type="text/css" rel="stylesheet" />
+	<?php include($serverRoot.'/metalinks.php'); ?>
 	<script type="text/javascript">
 		if(!navigator.cookieEnabled){
 			alert("Your browser cookies are disabled. To be able to login and access your profile, they must be enabled for this domain.");
 		}
-	
+
 		function resetPassword(){
 			if(document.getElementById("login").value == ""){
 				alert("Enter your login name in the Login field and leave the password blank");
@@ -113,7 +112,7 @@ else{
 			document.getElementById("resetpwd").value = "1";
 			document.forms["loginform"].submit();
 		}
-		
+
 		function checkCreds(){
 			if(document.getElementById("login").value == "" || document.getElementById("password").value == ""){
 				alert("Please enter your login and password.");
@@ -136,21 +135,24 @@ if(isset($profile_indexCrumbs)){
 	echo "</div>";
 }
 ?>
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+  <!-- The Grid -->
+  <div class="w3-row">
 <!-- inner text -->
 <div id="innertext" style="padding-left:0px;margin-left:0px;">
-	
+
 	<?php
 	if($statusStr){
 		?>
 		<div style='color:#FF0000;margin: 1em 1em 0em 1em;'>
-			<?php 
+			<?php
 			echo $statusStr;
 			?>
 		</div>
-		<?php 
+		<?php
 	}
 	?>
-	
+
 	<div style="width:300px;margin-right:auto;margin-left:auto;">
 		<fieldset style='padding:25px;margin:20px;width:300px;background-color:#FFFFCC;border:2px outset #E8EEFA;'>
 			<form id="loginform" name="loginform" action="index.php" onsubmit="return checkCreds();" method="post">
@@ -199,6 +201,8 @@ if(isset($profile_indexCrumbs)){
 		</div>
 	</div>
 </div>
+</div>
+</div>
 <?php include($serverRoot.'/footer.php'); ?>
 </body>
-</html>	
+</html>

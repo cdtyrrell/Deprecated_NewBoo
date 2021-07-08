@@ -6,23 +6,23 @@ if($CHECKLIST_FG_EXPORT) include_once($SERVER_ROOT.'/classes/ChecklistFGExportMa
 include_once($SERVER_ROOT.'/content/lang/checklists/checklist.'.$LANG_TAG.'.php');
 header("Content-Type: text/html; charset=".$CHARSET);
 
-$action = array_key_exists("submitaction",$_REQUEST)?$_REQUEST["submitaction"]:""; 
-$clValue = array_key_exists("cl",$_REQUEST)?$_REQUEST["cl"]:0; 
+$action = array_key_exists("submitaction",$_REQUEST)?$_REQUEST["submitaction"]:"";
+$clValue = array_key_exists("cl",$_REQUEST)?$_REQUEST["cl"]:0;
 $dynClid = array_key_exists("dynclid",$_REQUEST)?$_REQUEST["dynclid"]:0;
 $pageNumber = array_key_exists("pagenumber",$_REQUEST)?$_REQUEST["pagenumber"]:1;
 $pid = array_key_exists("pid",$_REQUEST)?$_REQUEST["pid"]:"";
 $thesFilter = array_key_exists("thesfilter",$_REQUEST)?$_REQUEST["thesfilter"]:0;
-$taxonFilter = array_key_exists("taxonfilter",$_REQUEST)?$_REQUEST["taxonfilter"]:""; 
-$showAuthors = array_key_exists("showauthors",$_REQUEST)?$_REQUEST["showauthors"]:0; 
-$showCommon = array_key_exists("showcommon",$_REQUEST)?$_REQUEST["showcommon"]:0; 
-$showImages = array_key_exists("showimages",$_REQUEST)?$_REQUEST["showimages"]:0; 
-$showVouchers = array_key_exists("showvouchers",$_REQUEST)?$_REQUEST["showvouchers"]:0; 
-$showAlphaTaxa = array_key_exists("showalphataxa",$_REQUEST)?$_REQUEST["showalphataxa"]:0; 
+$taxonFilter = array_key_exists("taxonfilter",$_REQUEST)?$_REQUEST["taxonfilter"]:"";
+$showAuthors = array_key_exists("showauthors",$_REQUEST)?$_REQUEST["showauthors"]:0;
+$showCommon = array_key_exists("showcommon",$_REQUEST)?$_REQUEST["showcommon"]:0;
+$showImages = array_key_exists("showimages",$_REQUEST)?$_REQUEST["showimages"]:0;
+$showVouchers = array_key_exists("showvouchers",$_REQUEST)?$_REQUEST["showvouchers"]:0;
+$showAlphaTaxa = array_key_exists("showalphataxa",$_REQUEST)?$_REQUEST["showalphataxa"]:0;
 $searchCommon = array_key_exists("searchcommon",$_REQUEST)?$_REQUEST["searchcommon"]:0;
 $searchSynonyms = array_key_exists("searchsynonyms",$_REQUEST)?$_REQUEST["searchsynonyms"]:0;
 $defaultOverride = array_key_exists("defaultoverride",$_REQUEST)?$_REQUEST["defaultoverride"]:0;
-$editMode = array_key_exists("emode",$_REQUEST)?$_REQUEST["emode"]:0; 
-$printMode = array_key_exists("printmode",$_REQUEST)?$_REQUEST["printmode"]:0; 
+$editMode = array_key_exists("emode",$_REQUEST)?$_REQUEST["emode"]:0;
+$printMode = array_key_exists("printmode",$_REQUEST)?$_REQUEST["printmode"]:0;
 $exportDoc = array_key_exists("exportdoc",$_REQUEST)?$_REQUEST["exportdoc"]:0;
 
 $statusStr='';
@@ -50,7 +50,7 @@ if($clValue && $clArray["defaultSettings"]){
 	$showDetails = $defaultArr["ddetails"];
 	if(!$defaultOverride){
 		if(array_key_exists('dcommon',$defaultArr)){$showCommon = $defaultArr["dcommon"];}
-		if(array_key_exists('dimages',$defaultArr)){$showImages = $defaultArr["dimages"];} 
+		if(array_key_exists('dimages',$defaultArr)){$showImages = $defaultArr["dimages"];}
 		if(array_key_exists('dvouchers',$defaultArr)){$showVouchers = $defaultArr["dvouchers"];}
 		if(array_key_exists('dauthors',$defaultArr)){$showAuthors = $defaultArr["dauthors"];}
 		if(array_key_exists('dalpha',$defaultArr)){$showAlphaTaxa = $defaultArr["dalpha"];}
@@ -86,7 +86,7 @@ elseif(array_key_exists('printlist_x',$_POST)){
 $isEditor = false;
 if($IS_ADMIN || (array_key_exists("ClAdmin",$USER_RIGHTS) && in_array($clid,$USER_RIGHTS["ClAdmin"]))){
 	$isEditor = true;
-	
+
 	//Add species to checklist
 	if(array_key_exists("tidtoadd",$_POST)){
 		$dataArr = array();
@@ -130,8 +130,8 @@ if($clArray["locality"]){
 	<meta charset="<?php echo $CHARSET; ?>">
 	<title><?php echo $DEFAULT_TITLE; ?><?php echo $LANG['RESCHECK'];?><?php echo $clManager->getClName(); ?></title>
     <link type="text/css" href="../css/bootstrap.css" rel="stylesheet" />
-	<link href="../css/base.css?ver=<?php echo $CSS_VERSION; ?>" type="text/css" rel="stylesheet" />
-	<link href="../css/main.css<?php echo (isset($CSS_VERSION_LOCAL)?'?ver='.$CSS_VERSION_LOCAL:''); ?>" type="text/css" rel="stylesheet" />
+		<?php include($SERVER_ROOT . '/metalinks.php'); ?>
+
 	<link href="<?php echo $CLIENT_ROOT; ?>/css/jquery-ui.css" type="text/css" rel="stylesheet" />
     <script src="<?php echo $CLIENT_ROOT; ?>/js/jquery.js" type="text/javascript"></script>
     <script src="<?php echo $CLIENT_ROOT; ?>/js/jquery-ui.js" type="text/javascript"></script>
@@ -271,6 +271,9 @@ if($clArray["locality"]){
 		echo '</div>';
 	}
 	?>
+	<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+	  <!-- The Grid -->
+	  <div class="w3-row">
 	<!-- This is inner text! -->
 	<div id='innertext' style="<?php echo ($printMode?'background-color:#ffffff;':''); ?>">
 		<?php
@@ -294,7 +297,7 @@ if($clArray["locality"]){
 						</a>
 					</span>
 				</div>
-				<?php 
+				<?php
 			}
 			?>
 			<div style="float:left;color:#990000;font-size:20px;font-weight:bold;">
@@ -302,7 +305,7 @@ if($clArray["locality"]){
 					<?php echo $clManager->getClName(); ?>
 				</a>
 			</div>
-			<?php 
+			<?php
 			if($activateKey && !$printMode){
 				?>
 				<div style="float:left;padding:5px;">
@@ -310,7 +313,7 @@ if($clArray["locality"]){
 						<img src='../images/key.png' style="width:15px;border:0px;" title='Open Symbiota Key' />
 					</a>
 				</div>
-				<?php 
+				<?php
 			}
 			if(!$printMode && $taxaArray){
 				?>
@@ -347,20 +350,20 @@ if($clArray["locality"]){
 					</span>
 					<?php echo $clArray["authors"]; ?>
 				</div>
-				<?php 
+				<?php
 				if($clArray["publication"]){
 					$pubStr = $clArray["publication"];
 					if(substr($pubStr,0,4)=='http' && !strpos($pubStr,' ')) $pubStr = '<a href="'.$pubStr.'" target="_blank">'.$pubStr."</a>";
 					echo "<div><span style='font-weight:bold;'>".(isset($LANG['CITATION'])?$LANG['CITATION']:'Citation').":</span> ".$pubStr."</div>";
 				}
 			}
-		
+
 			if(($locStr || ($clValue && ($clArray["latcentroid"] || $clArray["abstract"])) || $clArray["notes"])){
 				?>
 				<div class="moredetails" style="<?php echo (($showDetails || $printMode)?'display:none;':''); ?>color:blue;cursor:pointer;" onclick="toggle('moredetails')"><?php echo $LANG['MOREDETS'];?></div>
 				<div class="moredetails" style="display:<?php echo (($showDetails && !$printMode)?'block':'none'); ?>;color:blue;cursor:pointer;" onclick="toggle('moredetails')"><?php echo $LANG['LESSDETS'];?></div>
 				<div class="moredetails" style="display:<?php echo (($showDetails || $printMode)?'block':'none'); ?>;">
-					<?php 
+					<?php
 					if($locStr){
 						echo "<div><span style='font-weight:bold;'>".$LANG['LOC']."</span>".$locStr."</div>";
 					}
@@ -372,23 +375,23 @@ if($clArray["locality"]){
 					}
 					?>
 				</div>
-				<?php 
+				<?php
 			}
-			if($statusStr){ 
+			if($statusStr){
 				?>
 				<hr />
 				<div style="margin:20px;font-weight:bold;color:red;">
 					<?php echo $statusStr; ?>
 				</div>
 				<hr />
-				<?php 
-			} 
+				<?php
+			}
 			?>
 			<div>
 				<hr/>
 			</div>
 			<div>
-				<?php 
+				<?php
 				if(!$printMode){
 					?>
 					<!-- Option box -->
@@ -404,7 +407,7 @@ if($clArray["locality"]){
 									</div>
 									<div>
 										<div style="margin-left:10px;">
-											<?php 
+											<?php
 												if($displayCommonNames){
 													echo "<input data-role='none' type='checkbox' name='searchcommon' value='1'".($searchCommon?"checked":"")."/>".$LANG['COMMON']."<br/>";
 												}
@@ -418,7 +421,7 @@ if($clArray["locality"]){
 							    	<b><?php echo $LANG['FILTER'];?></b><br/>
 							    	<select data-role='none' name='thesfilter' id='thesfilter'>
 										<option value='0'><?php echo $LANG['OGCHECK'];?></option>
-										<?php 
+										<?php
 											$taxonAuthList = Array();
 											$taxonAuthList = $clManager->getTaxonAuthorityList();
 											foreach($taxonAuthList as $taCode => $taValue){
@@ -428,30 +431,30 @@ if($clArray["locality"]){
 									</select>
 								</div>
 								<div>
-									<?php 
-										//Display Common Names: 0 = false, 1 = true 
+									<?php
+										//Display Common Names: 0 = false, 1 = true
 									    if($displayCommonNames) echo "<input data-role='none' id='showcommon' name='showcommon' type='checkbox' value='1' ".($showCommon?"checked":"")."/>".$LANG['COMMON']."";
 									?>
 								</div>
 								<div>
-									<!-- Display as Images: 0 = false, 1 = true  --> 
+									<!-- Display as Images: 0 = false, 1 = true  -->
 								    <input data-role='none' name='showimages' type='checkbox' value='1' <?php echo ($showImages?"checked":""); ?> onclick="showImagesChecked(this.form);" />
                                     <?php echo $LANG['DISPLAYIMG'];?>
 								</div>
 								<?php if($clValue){ ?>
 									<div style='display:<?php echo ($showImages?"none":"block");?>' id="showvouchersdiv">
-										<!-- Display as Vouchers: 0 = false, 1 = true  --> 
+										<!-- Display as Vouchers: 0 = false, 1 = true  -->
 									    <input data-role='none' name='showvouchers' type='checkbox' value='1' <?php echo ($showVouchers?"checked":""); ?>/>
                                         <?php echo $LANG['NOTESVOUC'];?>
 									</div>
 								<?php } ?>
 								<div style='display:<?php echo ($showImages?"none":"block");?>' id="showauthorsdiv">
-									<!-- Display Taxon Authors: 0 = false, 1 = true  --> 
+									<!-- Display Taxon Authors: 0 = false, 1 = true  -->
 								    <input data-role='none' name='showauthors' type='checkbox' value='1' <?php echo ($showAuthors?"checked":""); ?>/>
                                     <?php echo $LANG['TAXONAUT'];?>
 								</div>
 								<div style='' id="showalphataxadiv">
-									<!-- Display Taxa Alphabetically: 0 = false, 1 = true  --> 
+									<!-- Display Taxa Alphabetically: 0 = false, 1 = true  -->
 								    <input data-role='none' name='showalphataxa' type='checkbox' value='1' <?php echo ($showAlphaTaxa?"checked":""); ?>/>
                                     <?php echo $LANG['TAXONABC'];?>
 								</div>
@@ -483,7 +486,7 @@ if($clArray["locality"]){
                                 ?>
                             </fieldset>
 						</form>
-						<?php 
+						<?php
 						if($clValue && $isEditor){
 							?>
 							<div class="editspp" style="display:<?php echo ($editMode?'block':'none'); ?>;width:250px;margin-top:10px;">
@@ -539,7 +542,7 @@ if($clArray["locality"]){
 									</fieldset>
 								</form>
 							</div>
-							<?php 
+							<?php
 						}
 						if(!$showImages){
 							if($coordArr = $clManager->getCoordinates(0,true)){
@@ -547,7 +550,7 @@ if($clArray["locality"]){
 								<div style="text-align:center;padding:10px">
 									<div>
 										<a href="checklistmap.php?clid=<?php echo $clid.'&thesfilter='.$thesFilter.'&taxonfilter='.$taxonFilter; ?>" target="_blank">
-											<?php 
+											<?php
 											$googleUrl = '//maps.googleapis.com/maps/api/staticmap?size=170x170&maptype=terrain';
 											if(array_key_exists('GOOGLE_MAP_KEY',$GLOBALS) && $GLOBALS['GOOGLE_MAP_KEY']) $googleUrl .= '&key='.$GLOBALS['GOOGLE_MAP_KEY'];
 											$googleUrl .= '&markers=size:tiny|'.implode('|',$coordArr);
@@ -564,11 +567,11 @@ if($clArray["locality"]){
 								</div>
 								<?php
 							}
-						} 
+						}
 						?>
 					</div>
 					<?php
-				} 
+				}
 				?>
 				<div>
 					<div style="margin:3px;">
@@ -589,12 +592,12 @@ if($clArray["locality"]){
 						<?php echo $clManager->getTaxaCount(); ?>
                         <?php echo $LANG['INCLUDSUB'];?>
 					</div>
-					<?php 
+					<?php
 					$taxaLimit = ($showImages?$clManager->getImageLimit():$clManager->getTaxaLimit());
 					$pageCount = ceil($clManager->getTaxaCount()/$taxaLimit);
 					$argStr = "";
 					if($pageCount > 1 && !$printMode){
-						if(($pageNumber)>$pageCount) $pageNumber = 1;  
+						if(($pageNumber)>$pageCount) $pageNumber = 1;
 						$argStr .= "&cl=".$clValue."&dynclid=".$dynClid.($showCommon?"&showcommon=".$showCommon:"").($showVouchers?"&showvouchers=".$showVouchers:"");
 						$argStr .= ($showAuthors?"&showauthors=".$showAuthors:"").($clManager->getThesFilter()?"&thesfilter=".$clManager->getThesFilter():"");
 						$argStr .= ($pid?"&pid=".$pid:"").($showImages?"&showimages=".$showImages:"").($taxonFilter?"&taxonfilter=".$taxonFilter:"");
@@ -620,7 +623,7 @@ if($clArray["locality"]){
 						}
 						echo "</div><hr />";
 					}
-					$prevfam = ''; 
+					$prevfam = '';
 					if($showImages){
 						echo '<div style="clear:both;">&nbsp;</div>';
 						foreach($taxaArray as $tid => $sppArr){
@@ -631,7 +634,7 @@ if($clArray["locality"]){
 							?>
 							<div class="tndiv">
 								<div class="tnimg" style="<?php echo ($imgSrc?"":"border:1px solid black;"); ?>">
-									<?php 
+									<?php
 									$spUrl = "../taxa/index.php?taxauthid=1&taxon=$tid&cl=".$clid;
 									if($imgSrc){
 										$imgSrc = (array_key_exists("imageDomain",$GLOBALS)&&substr($imgSrc,0,4)!="http"?$GLOBALS["imageDomain"]:"").$imgSrc;
@@ -644,13 +647,13 @@ if($clArray["locality"]){
 										<div style="margin-top:50px;">
 											<b><?php echo $LANG['IMAGE'];?><br/><?php echo $LANG['NOTY'];?><br/><?php echo $LANG['AVAIL'];?></b>
 										</div>
-										<?php 
+										<?php
 									}
 									?>
 								</div>
 								<div>
-									<?php 
-									if(!$printMode) echo '<a href="'.$spUrl.'" target="_blank">'; 
+									<?php
+									if(!$printMode) echo '<a href="'.$spUrl.'" target="_blank">';
 									echo '<b>'.$sppArr['sciname'].'</b>';
 									if(!$printMode) echo '</a>';
 									if(array_key_exists('vern',$sppArr)){
@@ -669,7 +672,7 @@ if($clArray["locality"]){
 									?>
 								</div>
 							</div>
-							<?php 
+							<?php
 						}
 					}
 					else{
@@ -699,14 +702,14 @@ if($clArray["locality"]){
 							}
 							if($isEditor){
 								//Delete species or edit details specific to this taxon (vouchers, notes, habitat, abundance, etc
-								?> 
+								?>
 								<span class="editspp" style="display:<?php echo ($editMode?'inline':'none'); ?>;">
 									<a href="#" onclick="return openPopup('clsppeditor.php?tid=<?php echo $tid."&clid=".$clid; ?>','editorwindow');">
 										<img src='../images/edit.png' style='width:13px;' title='edit details' />
 									</a>
 								</span>
-								<?php 
-								if($showVouchers && array_key_exists("dynamicsql",$clArray) && $clArray["dynamicsql"]){ 
+								<?php
+								if($showVouchers && array_key_exists("dynamicsql",$clArray) && $clArray["dynamicsql"]){
 									?>
 									<span class="editspp" style="display:none;">
 										<a href="#" onclick="return openPopup('../collections/list.php?db=all&thes=1&reset=1&taxa=<?php echo $tid."&targetclid=".$clid."&targettid=".$tid;?>','editorwindow');">
@@ -714,7 +717,7 @@ if($clArray["locality"]){
 										</a>
 									</span>
 									<?php
-								} 
+								}
 							}
 							echo "</div>\n";
 							if($showVouchers){
@@ -762,7 +765,7 @@ if($clArray["locality"]){
 			<div style="color:red;">
                 <?php echo $LANG['CHECKNULL'];?>
 			</div>
-			<?php 
+			<?php
 		}
 		?>
 	</div>
@@ -875,5 +878,7 @@ if($clArray["locality"]){
         <?php
     }
     ?>
+	</div>
+	</div>
 </body>
 </html>

@@ -10,8 +10,7 @@ $smManager = new SiteMapManager();
 <html>
 <head>
 	<title><?php echo $DEFAULT_TITLE; ?><?php echo $LANG['SITEMAP'];?></title>
-	<link href="css/base.css?ver=<?php echo $CSS_VERSION; ?>" type="text/css" rel="stylesheet" />
-	<link href="css/main.css<?php echo (isset($CSS_VERSION_LOCAL)?'?ver='.$CSS_VERSION_LOCAL:''); ?>" type="text/css" rel="stylesheet" />
+	<?php include($SERVER_ROOT . '/metalinks.php'); ?>
 	<script type="text/javascript">
 		function submitTaxaNoImgForm(f){
 			if(f.clid.value != ""){
@@ -35,6 +34,9 @@ $smManager = new SiteMapManager();
 	}
 
 	?>
+	<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+	  <!-- The Grid -->
+	  <div class="w3-row">
 	<!-- This is inner text! -->
 	<div id="innertext">
 		<h1><?php echo $LANG['SITEMAP']; ?></h1>
@@ -448,6 +450,8 @@ $smManager = new SiteMapManager();
 			</ul>
 		</div>
 	</div>
+</div>
+</div>
 	<?php
 		include($SERVER_ROOT.'/footer.php');
 	?>
