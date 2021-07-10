@@ -123,13 +123,13 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
               <span class="w3-right w3-opacity">Poaceae: Bambusoideae</span>
               <h4>What is a bamboo?</h4><br>
               <hr class="w3-clear">
-              <p>Bamboos are a subfamily of grasses. There are over 1,500 species of bamboo worldwide, around a third of which are native to the western hemisphere. The bamboos evolved in and adapted to forest habitats, though some species can now be found in more open environments.</p>
+              <p>The bamboos (Poaceae: Bambusoideae) are grasses that evolved in and adapted to forest habitats (though some species can now be found in more open environments). There are over 1,500 species of bamboo worldwide, around a third of which are native to the western hemisphere including one genus with three species (<i>Arundinaria</i>; "cane") that is native to what is now the southeastern continental United States.</p>
                 <div class="w3-row-padding" style="margin:0 -16px">
                   <div class="w3-half">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Chusquea_sp._%2811274480545%29.jpg/800px-Chusquea_sp._%2811274480545%29.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Chusquea_sp._%2811274480545%29.jpg/800px-Chusquea_sp._%2811274480545%29.jpg" style="width:100%" alt="Branch of Chusquea species" class="w3-margin-bottom">
                   </div>
                   <div class="w3-half">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Bambou_%C3%A0_l%27entr%C3%A9e_annexe_du_jardin_de_Val-Rahmeh.jpg/800px-Bambou_%C3%A0_l%27entr%C3%A9e_annexe_du_jardin_de_Val-Rahmeh.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Bambou_%C3%A0_l%27entr%C3%A9e_annexe_du_jardin_de_Val-Rahmeh.jpg/800px-Bambou_%C3%A0_l%27entr%C3%A9e_annexe_du_jardin_de_Val-Rahmeh.jpg" style="width:100%" alt="Tall bamboo" class="w3-margin-bottom">
                 </div>
               </div>
               <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom">More Info</button>

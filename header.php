@@ -10,7 +10,7 @@
     <button class="w3-button w3-padding-large" title="Search">Species</button>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:150px">
       <a href="<?php echo $clientRoot; ?>/checklists/checklist.php?cl=1" class="w3-bar-item w3-button">Browse</a>
-      <a href="<?php echo $clientRoot; ?>/checklists/dynamicmap.php" class="w3-bar-item w3-button">Map Search</a>
+      <!-- <a href="<?php echo $clientRoot; ?>/checklists/dynamicmap.php" class="w3-bar-item w3-button">Map Search</a> -->
       <!-- <a href="<?php echo $clientRoot; ?>/imagelib/search.php" class="w3-bar-item w3-button">Images</a> -->
     </div>
   </div>
@@ -19,14 +19,13 @@
     <button class="w3-button w3-padding-large" title="Search">Specimens</button>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:150px">
       <a href="<?php echo $clientRoot; ?>/collections/index.php" class="w3-bar-item w3-button">Search</a>
-      <a href="<?php echo $clientRoot; ?>/collections/map/mapinterface.php" class="w3-bar-item w3-button">Map Search</a>
+      <!-- <a href="<?php echo $clientRoot; ?>/collections/map/mapinterface.php" class="w3-bar-item w3-button">Map Search</a> -->
       <!-- <a href="<?php echo $clientRoot; ?>/imagelib/search.php" class="w3-bar-item w3-button">Images</a> -->
     </div>
   </div>
   <!-- Keys -->
-  <a href="<?php echo $clientRoot; ?>/ident/index.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Keys">Keys</a>
-  <!-- Site Map -->
-  <a href='<?php echo $clientRoot; ?>/sitemap.php' class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Site Menu</a>
+  <!-- <a href="<?php echo $clientRoot; ?>/ident/index.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Keys">Keys</a> -->
+
 
   <!-- Right Side -->
   <?php
@@ -37,6 +36,7 @@
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:100px">
       <a href="<?php echo $clientRoot; ?>/profile/viewprofile.php" class="w3-bar-item w3-button">Profile</a>
       <a href="<?php echo $clientRoot; ?>/profile/index.php?submit=logout" class="w3-bar-item w3-button">Logout</a>
+      <a href='<?php echo $clientRoot; ?>/sitemap.php' class="w3-bar-item w3-button">Site Menu</a>
     </div>
   </div>
   <?php
@@ -62,16 +62,16 @@
 <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
   <a href="<?php echo $clientRoot; ?>/index.php" class="w3-bar-item w3-button w3-padding-large">Home</a>
   <a href="#" class="w3-bar-item w3-button w3-padding-large">Browse Species</a>
-  <a href="<?php echo $clientRoot; ?>/checklists/dynamicmap.php?interface=key" class="w3-bar-item w3-button w3-padding-large">Species Map Search</a>
+  <!-- <a href="<?php echo $clientRoot; ?>/checklists/dynamicmap.php?interface=key" class="w3-bar-item w3-button w3-padding-large">Species Map Search</a> -->
   <a href="<?php echo $clientRoot; ?>/collections/index.php" class="w3-bar-item w3-button w3-padding-large">Search Specimens</a>
-  <a href="<?php echo $clientRoot; ?>/collections/map/mapinterface.php" class="w3-bar-item w3-button w3-padding-large">Specimen Map Search</a>
+  <!-- <a href="<?php echo $clientRoot; ?>/collections/map/mapinterface.php" class="w3-bar-item w3-button w3-padding-large">Specimen Map Search</a>
   <a href="#" class="w3-bar-item w3-button w3-padding-large">Keys</a>
-  <a href="<?php echo $clientRoot; ?>/imagelib/search.php" class="w3-bar-item w3-button w3-padding-large">Image Search</a>
-  <a href="<?php echo $clientRoot; ?>/sitemap.php" class="w3-bar-item w3-button w3-padding-large">Site Menu</a>
+  <a href="<?php echo $clientRoot; ?>/imagelib/search.php" class="w3-bar-item w3-button w3-padding-large">Image Search</a> -->
 
   <?php
   if($userDisplayName){
   ?>
+    <a href="<?php echo $clientRoot; ?>/sitemap.php" class="w3-bar-item w3-button w3-padding-large">Site Menu</a>
     <a href="<?php echo $clientRoot; ?>/profile/viewprofile.php" class="w3-bar-item w3-button w3-padding-large">Profile</a>
     <a href="<?php echo $clientRoot; ?>/profile/index.php?submit=logout" class="w3-bar-item w3-button w3-padding-large">Logout</a>
   <?php

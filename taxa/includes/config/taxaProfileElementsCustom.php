@@ -19,6 +19,10 @@
 
 //ADD PLUGINS BELOW THIS LINE
 
+/*
+  Taxon tile
+  ==========
+*/
 ob_start();
 // Scientific Name
 echo "<div class='w3-card w3-round w3-white'>";
@@ -32,7 +36,7 @@ if($taxonRank > 180){
         <?php echo $taxonManager->getAuthor(); ?>
         <?php
         $parentLink = "index.php?taxon=".$taxonManager->getParentTid()."&cl=".$taxonManager->getClid()."&proj=".$projValue."&taxauthid=".$taxAuthId;
-        echo "<a href='".$parentLink."'><img id='parenttaxonicon' src='../images/toparent.png' title='Go to Parent' /></a>";
+        echo '<a href="'.$parentLink.'"><i class="fa fa-arrow-up" id="parenttaxonicon" title="Go to Parent"></i></a>';
         //If submitted tid does not equal accepted tid, state that user will be redirected to accepted
         if(($taxonManager->getTid() != $taxonManager->getSubmittedTid()) && $taxAuthId){
             echo '<span id="redirectedfrom"> ('.$LANG['REDIRECT'].': <i>'.$taxonManager->getSubmittedSciName().'</i>)</span>';
@@ -47,7 +51,7 @@ else{
     if($taxonRank > 140){
         $parentLink = "index.php?taxon=".$taxonManager->getParentTid()."&cl=".$taxonManager->getClid()."&proj=".$projValue."&taxauthid=".$taxAuthId;
         $displayName .= ' <a href="'.$parentLink.'">';
-        $displayName .= '<img id="parenttaxonicon" src="../images/toparent.png" title="Go to Parent" />';
+        $displayName .= '<i class="fa fa-arrow-up" id="parenttaxonicon" title="Go to Parent"></i>';
         $displayName .= '</a>';
     }
     echo "<p>" . $displayName . "</p>";
@@ -69,6 +73,11 @@ if(!$taxonManager->echoImages(0,1,0)){
 <?php
 $taxonTile = ob_get_clean();
 
+
+/*
+  Pencil Icon
+  ===========
+*/
 ob_start();
 $isTaxonEditor = false;
 if($SYMB_UID){
@@ -85,6 +94,11 @@ if($isTaxonEditor){
 }
 $pencilIcon = ob_get_clean();
 
+
+/*
+  Image Gallery
+  =============
+*/
 ob_start();
     // if($clValue){
     //     echo "<legend>";
@@ -100,7 +114,6 @@ ob_start();
             ksort($sppArr);
             foreach($sppArr as $sciNameKey => $subArr){
                 echo '<div class="w3-quarter w3-container w3-margin-bottom w3-center">';
-                echo "<a href='index.php?taxon=".$subArr["tid"]."&taxauthid=".$taxAuthId.($clValue?"&cl=".$clValue:"")."'>";
                 // Image
                 if(array_key_exists("url",$subArr)){
                     $imgUrl = $subArr["url"];
@@ -113,7 +126,8 @@ ob_start();
                             $imgUrl = $GLOBALS["imageDomain"].$subArr["thumbnailurl"];
                         }
                     }
-                    echo '<img style="width:100%;" class="w3-hover-opacity" src="'.$imgUrl.'" title="'.$subArr['caption'].'" alt="Image of '.$sciNameKey.'" />';
+                    echo "<a href='index.php?taxon=".$subArr["tid"]."&taxauthid=".$taxAuthId.($clValue?"&cl=".$clValue:"")."'>".PHP_EOL;
+                    echo '<img style="width:100%;" class="w3-hover-opacity" src="'.$imgUrl.'" title="'.$subArr['caption'].'" alt="Image of '.$sciNameKey.'" /></a>';
                     echo '<p id="imgphotographer" title="'.$LANG['PHOTOGRAPHER'].': '.$subArr['photographer'].'">';
                     echo '</p>';
                 }
@@ -125,6 +139,7 @@ ob_start();
                 }
 
                 echo '<div class="w3-container w3-white w3-center">';
+                echo "<a href='index.php?taxon=".$subArr["tid"]."&taxauthid=".$taxAuthId.($clValue?"&cl=".$clValue:"")."'>".PHP_EOL;
                 echo "<i>".$sciNameKey."</i>";
                 echo "</a></div>";
 
@@ -144,6 +159,11 @@ ob_start();
 <?php
 $imgGallery = ob_get_clean();
 
+
+/*
+  Description Dropdown
+  ====================
+*/
 ob_start();
 if($descArr = $taxonManager->getDescriptions()){
     if(isset($PORTAL_TAXA_DESC)){
@@ -176,7 +196,7 @@ if($descArr = $taxonManager->getDescriptions()){
                     echo '<a href="#tab'.$id.'" class="selected">'.$cap.'</a>';
                     echo '<!-- Drop Down Blocks -->'.PHP_EOL;
                     echo '<div class="w3-white">'.PHP_EOL;
-                    echo '<button onclick="myFunction(\'tab'.$id.'\')" class="w3-button w3-block w3-theme-l1 w3-left-align">'.$cap.'</button>'.PHP_EOL; //need to escape 'tab.$id'
+                    echo '<button onclick="myFunction(\'tab'.$id.'\')" class="w3-button w3-block w3-theme-l1 w3-left-align">'.$cap.'</button>'.PHP_EOL;
                     echo '<div id="tab'.$id.'" class="w3-hide w3-container">'.PHP_EOL;
 
                     if($vArr["source"]){
@@ -211,7 +231,6 @@ if($descArr = $taxonManager->getDescriptions()){
     <?php
 } else {
   echo '<div class="w3-white">'.PHP_EOL;
-
   echo '<button onclick="myFunction(\'nodesc\')" class="w3-button w3-block w3-theme-l1 w3-left-align">'.$LANG['DESCRIPTION'].'</button>'.PHP_EOL;
   echo '<div id="nodesc" class="w3-hide w3-container">';
     echo '<p>'.$LANG['DESCRIPTION_NOT_AVAILABLE'].'</p>';
@@ -219,4 +238,16 @@ if($descArr = $taxonManager->getDescriptions()){
 }
 $descDropDown = ob_get_clean();
 
+
+/*
+  Distribution
+  ============
+*/
+ob_start();
+  echo '<div class="w3-white">'.PHP_EOL;
+  echo '<button onclick="myFunction(\'nodist\')" class="w3-button w3-block w3-theme-l1 w3-left-align">Distribution</button>'.PHP_EOL;
+  echo '<div id="nodist" class="w3-hide w3-container">';
+    echo '<p>'.$LANG['DESCRIPTION_NOT_AVAILABLE'].'</p>';
+  echo '</div></div>';
+$distDropDown = ob_get_clean();
 ?>

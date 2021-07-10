@@ -72,22 +72,16 @@ else{
 <html>
 <head>
 	<title><?php echo $DEFAULT_TITLE." - ".$spDisplay; ?></title>
-	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $CHARSET; ?>"/>
+	<!-- <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $CHARSET; ?>"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="../css/speciesprofilebase.css?ver=<?php echo $CSS_VERSION; ?>" type="text/css" rel="stylesheet" />
-	<link href="../css/speciesprofile.css<?php echo (isset($CSS_VERSION_LOCAL)?'?ver='.$CSS_VERSION_LOCAL:''); ?>" type="text/css" rel="stylesheet" />
+	<link href="../css/speciesprofilebase.css?ver=<?php #echo $CSS_VERSION; ?>" type="text/css" rel="stylesheet" />
+	<link href="../css/speciesprofile.css<?php #echo (isset($CSS_VERSION_LOCAL)?'?ver='.$CSS_VERSION_LOCAL:''); ?>" type="text/css" rel="stylesheet" /> -->
 
-	<link rel="stylesheet" href="../css/w3.css">
-	<link rel="stylesheet" href="../css/w3-theme-light-green.css">
-	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<?php include($SERVER_ROOT . '/metalinks.php'); ?>
 
 	<link href="../css/jquery-ui.css" type="text/css" rel="Stylesheet" />
 	<script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui.js"></script>
-	<style>
-	html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
-	</style>
 	<script type="text/javascript">
 		<?php include_once($SERVER_ROOT.'/config/googleanalytics.php'); ?>
 	</script>
@@ -111,7 +105,7 @@ else{
     }
     ?>
 </head>
-<body class="w3-light-grey">
+<body class="w3-theme-l5">
 <?php
 $displayLeftMenu = false;
 include($SERVER_ROOT.'/header.php');
@@ -129,6 +123,7 @@ include($SERVER_ROOT.'/header.php');
 
 	<!-- "Middle Row" -->
 	<div id="middlerow" class="w3-row">
+		<div class="w3-container">
 		<div id="leftcolumn" class="w3-col m3">
 	    <?php
 	      foreach($leftColumnElements as $e){
@@ -137,13 +132,14 @@ include($SERVER_ROOT.'/header.php');
 	    ?>
 		</div>
 
-    <div id="rightcolumn" class="w3-col m9">
+    <div id="rightcolumn" class="w3-col m9 w3-padding">
             <?php
             foreach($rightColumnElements as $e){
                 echo $e;
             }
             ?>
     </div>
+	</div>
 	</div>
 
 	<div id="bottomrow" class="w3-row">
