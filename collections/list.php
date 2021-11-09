@@ -43,8 +43,7 @@ if(isset($_REQUEST['db'])){
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $CHARSET;?>">
 	<title><?php echo $DEFAULT_TITLE.' '.$LANG['PAGE_TITLE']; ?></title>
-	<link href="../css/base.css?ver=<?php echo $CSS_VERSION; ?>" type="text/css" rel="stylesheet" />
-	<link href="../css/main.css<?php echo (isset($CSS_VERSION_LOCAL)?'?ver='.$CSS_VERSION_LOCAL:''); ?>" type="text/css" rel="stylesheet" />
+  <?php include($SERVER_ROOT . '/metalinks.php'); ?>
 	<link type="text/css" href="../css/jquery-ui.css" rel="Stylesheet" />
 	<style type="text/css">
 		.ui-tabs .ui-tabs-nav li { width:32%; }

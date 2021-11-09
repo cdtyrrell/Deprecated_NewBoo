@@ -6,7 +6,7 @@
 /collections/editor/includes/config/occurVarDefault.php
 /collections/editor/includes/config/occurVarGenObsDefault.php
 /config/dbconnection.php
-/config/symbini.php
+/config/symbini_DEV.php
 /css/jquery-ui.css
 /css/main.css
 /css/speciesprofile.css
